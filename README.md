@@ -12,7 +12,7 @@ The main idea of this project is:
 Tech Used:
 
 1) Python (Django)
-2) SQLite (default Django DB)
+2) SQLite 
 3) Django Templates (HTML)
 4) Django Authentication System
 - I chose Django because it provides built-in authentication and makes permission handling easier to implement cleanly.
