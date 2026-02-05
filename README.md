@@ -4,12 +4,11 @@ About This Project:
    
 - I built this project to understand how real-world applications handle role-based access control (RBAC).
 - I designed the system in a way where the Admin can dynamically create roles and assign permissions from the database itself.
----------------------- * -----------------------------
 
 The main idea of this project is:
 
 - Access control should be configurable, not hardcoded. This system supports both table-level and field-level permissions.
----------------------- * ------------------------------
+
 Tech Used:
 
 1) Python (Django)
@@ -17,7 +16,6 @@ Tech Used:
 3) Django Templates (HTML)
 4) Django Authentication System
 - I chose Django because it provides built-in authentication and makes permission handling easier to implement cleanly.
------------------- * --------------------
 
 How the System Works
 
@@ -35,7 +33,6 @@ There are two main types of users:
 - Assigned a specific role
 - Can only access tables and fields based on their role permissions
 - Cannot perform any action outside their permission scope
---------------- * -------------------------
   
 Database Structure:
 
@@ -43,7 +40,6 @@ The main tables used in this project:
 
 - Employees, Projects, Roles, Permissions, UserRole
 - Permissions are stored in the database and linked to roles.
--------------- * ----------------------
   
 Permission Types:
 
@@ -58,7 +54,6 @@ Permissions are handled at two levels:
 
 - Can view specific columns
 - Can edit specific columns
---------------------- * ---------------------
 
 Access Control Logic:
 
@@ -66,7 +61,6 @@ Access Control Logic:
 - If a user does not have permission to view a field, that field is hidden.
 - If edit permission is not granted, editing is blocked.
 - All permissions are validated in the backend to prevent unauthorized access.
---------------------- * -----------------
 
 How to Run the Project:
 
@@ -76,7 +70,6 @@ How to Run the Project:
 4) python manage.py runserver
 5) Open in browser
 - http://127.0.0.1:8000/
--------------------- * ----------------------
   
 Sample Credentials: 
 
@@ -87,7 +80,6 @@ Password: admin123
 Regular User:
 Username: user1
 Password: jasber123
----------------------- * --------------
 
 What I Learned:
 
@@ -96,7 +88,6 @@ What I Learned:
 - Backend-level validation for security
 - Handling dynamic UI rendering based on roles
 - Designing clean role-permission mapping in database
-------------------------- * ---------------------
 
 Final Thoughts:
 
