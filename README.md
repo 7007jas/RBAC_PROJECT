@@ -1,86 +1,84 @@
-Config-Driven Role-Based Access Control (RBAC) System
+Config-Driven RBAC System (Django)
 
-Project Overview
-This project demonstrates a Config-Driven Role-Based Access Control (RBAC) system built using Django.
+About This Project:
+   
+- I built this project to understand how real-world applications handle role-based access control (RBAC).
+- I designed the system in a way where the Admin can dynamically create roles and assign permissions from the database itself.
+---------------------- * -----------------------------
 
-The system allows an Admin user to dynamically create roles and assign table-level and field-level permissions. Regular users can only access data based on their assigned roles.
+The main idea of this project is:
 
-Permissions are stored in the database and are NOT hardcoded.
+- Access control should be configurable, not hardcoded. This system supports both table-level and field-level permissions.
+---------------------- * ------------------------------
+Tech Used:
 
----
-Tech Stack
-- Backend: Python (Django)
-- Database: SQLite
-- Frontend: Django Templates (HTML)
-- Authentication: Django Built-in Authentication System
+1) Python (Django)
+2) SQLite (default Django DB)
+3) Django Templates (HTML)
+4) Django Authentication System
+- I chose Django because it provides built-in authentication and makes permission handling easier to implement cleanly.
+------------------ * --------------------
 
----
+How the System Works
 
- Authentication
-Admin
+There are two main types of users:
+
+1. Admin:
+
 - Can create roles
-- Can assign permissions
+- Can assign permissions to roles
 - Has full access to all tables and fields
+- Controls what other users can see or edit
 
- Regular Users
-- Assigned specific roles
-- Can only view/edit based on assigned permissions
+2. Regular Users:
 
----
+- Assigned a specific role
+- Can only access tables and fields based on their role permissions
+- Cannot perform any action outside their permission scope
+--------------- * -------------------------
+  
+Database Structure:
 
-Sample Tables
-- Employees
-- Projects
-- Roles
-- Permissions
-- UserRole (Mapping users to roles)
+The main tables used in this project:
 
----
+- Employees, Projects, Roles, Permissions, UserRole
+- Permissions are stored in the database and linked to roles.
+-------------- * ----------------------
+  
+Permission Types:
 
- Role & Permission Model
+Permissions are handled at two levels:
 
-Permissions are configurable at:
+1) Table Level:
 
- Table Level
-- Can View Table
-- Can Edit Table
+- Can view a table
+- Can edit a table
 
- Field Level
-- Can View Specific Column
-- Can Edit Specific Column
+2) Field Level:
 
-Example:
-- Viewer → Can view employee table but salary column hidden
-- Editor → Can view and edit employee table
-- Manager → Full access
+- Can view specific columns
+- Can edit specific columns
+--------------------- * ---------------------
 
----
+Access Control Logic:
 
- Access Enforcement
-- Tables without permission are hidden
-- Fields without view permission are hidden
-- Edit is blocked if permission not granted
-- Unauthorized actions are rejected by backend
+- If a user does not have permission to view a table, the table is not shown.
+- If a user does not have permission to view a field, that field is hidden.
+- If edit permission is not granted, editing is blocked.
+- All permissions are validated in the backend to prevent unauthorized access.
+--------------------- * -----------------
 
----
+How to Run the Project:
 
- How to Run the Project
-
-1. Clone the repository
-2. Install dependencies:
-   pip install django
-3. Run migrations:
-   python manage.py migrate
-4. Create superuser:
-   python manage.py createsuperuser
-5. Run server:
-   python manage.py runserver
-6. Open:
-   http://127.0.0.1:8000/
-
----
-
- Sample Login Credentials
+1) pip install django
+2) python manage.py migrate
+3) python manage.py createsuperuser
+4) python manage.py runserver
+5) Open in browser
+- http://127.0.0.1:8000/
+-------------------- * ----------------------
+  
+Sample Credentials: 
 
 Admin:
 Username: admin
@@ -89,18 +87,18 @@ Password: admin123
 Regular User:
 Username: user1
 Password: jasber123
+---------------------- * --------------
 
----
+What I Learned:
 
-Core Features
-- Config-driven permission system
-- Dynamic role creation
-- Table-level access control
-- Field-level access control
-- Backend permission validation
-- Role-based UI behavior
+- How RBAC works in real applications
+- How to design configurable permission systems
+- Backend-level validation for security
+- Handling dynamic UI rendering based on roles
+- Designing clean role-permission mapping in database
+------------------------- * ---------------------
 
----
+Final Thoughts:
 
- Conclusion
-This project demonstrates a secure and dynamic RBAC system where permissions are fully configurable by an Admin and enforced strictly at the backend.
+- This project helped me understand how enterprise-level applications manage access control in a scalable way. 
+- Instead of relying on hardcoded checks, everything is driven through configuration, making it flexible and easier to maintain.
